@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>grid仿淘宝品质生活家模块</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      display: inline-grid;
+      border: 1px solid red;
+      grid-template-rows: 240px repeat(4, 120px);
+      grid-template-columns: 250px 250px;
+      grid-template-areas: 'big1 mid1' 'big1 mid2' 'sml1 mid2' 'sml2 mid3' 'sml3 mid3';
+      margin: 20px;
+    }
+
+    .image {
+      border: 1px solid #f60;
+    }
+
+    .image:nth-child(1) {
+      grid-area: big1;
+    }
+
+    .image:nth-child(2) {
+      grid-area: sml1;
+    }
+
+    .image:nth-child(3) {
+      grid-area: sml2;
+    }
+
+    .image:nth-child(4) {
+      grid-area: sml3;
+    }
+
+    .image:nth-child(5) {
+      grid-area: mid1;
+    }
+
+    .image:nth-child(6) {
+      grid-area: mid2;
+    }
+
+    .image:nth-child(7) {
+      grid-area: mid3
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="image big"></div>
+    <div class="image small"></div>
+    <div class="image small"></div>
+    <div class="image small"></div>
+    <div class="image middle"></div>
+    <div class="image middle"></div>
+    <div class="image middle"></div>
+  </div>
+</body>
+
+</html>
