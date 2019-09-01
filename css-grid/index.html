@@ -13,21 +13,27 @@
       box-sizing: border-box;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     .box {
       display: inline-grid;
-      border: 1px solid red;
+      border: 1px solid #f4f4f4;
       grid-template-rows: 240px repeat(4, 120px);
-      grid-template-columns: 250px 250px;
+      grid-template-columns: 294px 196px;
       grid-template-areas: 'big1 mid1' 'big1 mid2' 'sml1 mid2' 'sml2 mid3' 'sml3 mid3';
       margin: 20px;
     }
 
     .image {
-      border: 1px solid #f60;
+      border: 1px solid #f4f4f4;
+      text-align: center;
     }
 
     .image:nth-child(1) {
       grid-area: big1;
+      padding: 19px;
     }
 
     .image:nth-child(2) {
@@ -58,13 +64,27 @@
 
 <body>
   <div class="box">
-    <div class="image big"></div>
-    <div class="image small"></div>
-    <div class="image small"></div>
-    <div class="image small"></div>
-    <div class="image middle"></div>
-    <div class="image middle"></div>
-    <div class="image middle"></div>
+    <div class="image big">
+      <img src="https://gw.alicdn.com/tfs/TB1hJ2KX6ihSKJjy0FlXXadEXXa-254-318.png" alt="">
+    </div>
+    <div class="image small">
+      <img src="https://img.alicdn.com/imgextra/i2/113/TB2yDdEXamgSKJjSspiXXXyJFXa_!!113-2-luban.png_100x100q90.jpg_.webp" alt="">
+    </div>
+    <div class="image small">
+      <img src="https://img.alicdn.com/imgextra/i3/81/TB282btfoEIL1JjSZFFXXc5kVXa_!!81-2-luban.png_100x100q90.jpg_.webp" alt="">
+    </div>
+    <div class="image small">
+      <img src="https://img.alicdn.com/imgextra/i4/159/TB2aszIdwMPMeJjy1XdXXasrXXa_!!159-2-luban.png_100x100q90.jpg_.webp" alt="">
+    </div>
+    <div class="image middle">
+      <img src="https://img.alicdn.com/imgextra/i3/194/TB22Vj0dwoQMeJjy0FoXXcShVXa_!!194-2-luban.png_120x120q90.jpg_.webp" alt="">
+    </div>
+    <div class="image middle">
+      <img src="https://img.alicdn.com/imgextra/i2/172/TB2zzZQXHH8F1Jjy1zbXXaVNVXa_!!172-2-luban.png_120x120q90.jpg_.webp" alt="">
+    </div>
+    <div class="image middle">
+      <img src="https://img.alicdn.com/imgextra/i1/185/TB2JT6NdwsSMeJjSspcXXXjFXXa_!!185-2-luban.png_120x120q90.jpg_.webp" alt="">
+    </div>
   </div>
 </body>
 
