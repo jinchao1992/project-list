@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css heart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .heart {
+      display: inline-block;
+      position: relative;
+      margin: 150px;
+      transition: all .5s;
+    }
+
+    .heart:hover {
+      transform: scale(1.5);
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: absolute;
+      bottom: 50px;
+    }
+
+    .left {
+      left: -50px;
+      border-radius: 50% 0 0 50%;
+      transform: rotate(45deg) translateX(17px);
+    }
+
+    .right {
+      right: -50px;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(45deg) translateY(17px);
+    }
+
+    .bottom {
+      width: 100px;
+      height: 100px;
+      background: red;
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heart">
+    <div class="left box"></div>
+    <div class="right box"></div>
+    <div class="bottom"></div>
+  </div>
+</body>
+
+</html>

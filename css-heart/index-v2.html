@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css heart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .heart {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin: 100px auto;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 90px;
+      position: absolute;
+      left: 50px;
+      background: red;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .heart::before {
+      transform-origin: 100% 100%;
+      transform: rotate(45deg);
+      background: red;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heart"></div>
+</body>
+
+</html>
