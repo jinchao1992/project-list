@@ -18,12 +18,22 @@
       height: 100px;
       position: relative;
       margin: 100px auto;
-      transition: all .5s;
+      /* transition: all .5s; */
+      animation: heart 800ms linear infinite alternate;
     }
 
-    .heart:hover {
-      transform: scale(1.5);
+    @keyframes heart {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.5);
+      }
     }
+
+    /* .heart:hover {
+      transform: scale(1.5);
+    } */
 
     .heart::before,
     .heart::after {
