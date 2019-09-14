@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
   <div id="canvas"></div>
   <script>
     let canvas = document.querySelector('#canvas');
-    canvas.onclick = (e) => {
+    canvas.onmousemove = (e) => {
       let div = document.createElement('div');
       div.classList.add('active');
       div.style.left = e.clientX + 'px';
