@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>canvas画板</title>
+</head>
+
+<body>
+  <div id="canvas"></div>
+  <script>
+    let canvas = document.querySelector('#canvas');
+    canvas.onclick = (e) => {
+      let div = document.createElement('div');
+      div.classList.add('active');
+      div.style.left = e.clientX + 'px';
+      div.style.top = e.clientY + 'px';
+      canvas.appendChild(div);
+    }
+  </script>
+</body>
+
+</html>

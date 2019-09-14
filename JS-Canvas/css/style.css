@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#canvas {
+  height: 100vh;
+  border: 1px solid red;
+}
+.active {
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  position: absolute;
+}
