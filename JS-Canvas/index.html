@@ -18,22 +18,30 @@
     // canvas 画线
     let ctx = canvas.getContext("2d");
     let bFlag = false;
+    let lastPosition = [];
     ctx.fillStyle = "rgb(0,0,0)";
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.lineWidth = 6;
+    ctx.lineCap = "round";
     // 检测是否支持touch事件
     let touchable = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
-    // console.log(touchable);
     if (touchable) {
       // 支持touch事件
       canvas.addEventListener('touchstart', (e) => {
         bFlag = true;
+        lastPosition = [e.touches[0].clientX, e.touches[0].clientY];
       });
       canvas.addEventListener('touchmove', (e) => {
         if (bFlag) {
           /*绘制原型，arc 四个参数（x,y, 半径, 弧度）*/
-          ctx.beginPath();
-          ctx.arc(e.touches[0].clientX, e.touches[0].clientY, 5, 0, 2 * Math.PI);
-          ctx.stroke();
-          ctx.fill();
+          // ctx.beginPath();
+          // ctx.arc(e.touches[0].clientX, e.touches[0].clientY, 5, 0, 2 * Math.PI);
+          // ctx.stroke();
+          // ctx.fill();
+          let x = e.touches[0].clientX;
+          let y = e.touches[0].clientY;
+          drawLine(lastPosition[0], lastPosition[1], x, y);
+          lastPosition = [x, y];
         }
       });
       canvas.addEventListener('touchend', (e) => {
@@ -43,21 +51,29 @@
       // 不支持touch事件
       canvas.onmousedown = (e) => {
         bFlag = true;
+        lastPosition = [e.clientX, e.clientY];
       };
       canvas.onmousemove = (e) => {
         if (bFlag) {
           /*绘制原型，arc 四个参数（x,y, 半径, 弧度）*/
-          ctx.beginPath();
-          ctx.arc(e.clientX, e.clientY, 5, 0, 2 * Math.PI);
-          ctx.stroke();
-          ctx.fill();
+          // ctx.beginPath();
+          // ctx.arc(e.clientX, e.clientY, 5, 0, 2 * Math.PI);
+          // ctx.stroke();
+          // ctx.fill();
+          drawLine(lastPosition[0], lastPosition[1], e.clientX, e.clientY);
+          lastPosition = [e.clientX, e.clientY];
         }
       };
       canvas.onmouseup = () => {
         bFlag = false;
       }
     }
-
+    function drawLine(x1, y1, x2, y2) {
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
   </script>
 </body>
 
