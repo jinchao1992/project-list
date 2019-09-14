@@ -10,15 +10,35 @@
 </head>
 
 <body>
-  <div id="canvas"></div>
+  <canvas id="canvas"></canvas>
   <script>
     let canvas = document.querySelector('#canvas');
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+    // canvas 画线
+    let ctx = canvas.getContext("2d");
+    let bFlag = false;
+    ctx.fillStyle = "rgb(0,0,0)";
+    canvas.onmousedown = (e) => {
+      bFlag = true;
+      // ctx.fillRect(e.clientX - 5, e.clientY - 5, 10, 10);
+
+      /*绘制原型，arc 四个参数（x,y, 半径, 弧度）*/
+      // ctx.beginPath();
+      // ctx.arc(e.clientX, e.clientY, 10, 0, 2 * Math.PI);
+      // ctx.stroke();
+    };
     canvas.onmousemove = (e) => {
-      let div = document.createElement('div');
-      div.classList.add('active');
-      div.style.left = e.clientX + 'px';
-      div.style.top = e.clientY + 'px';
-      canvas.appendChild(div);
+      if (bFlag) {
+        /*绘制原型，arc 四个参数（x,y, 半径, 弧度）*/
+        ctx.beginPath();
+        ctx.arc(e.clientX, e.clientY, 10, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+      }
+    };
+    canvas.onmouseup = () => {
+      bFlag = false;
     }
   </script>
 </body>
