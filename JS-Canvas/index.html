@@ -10,6 +10,10 @@
 </head>
 
 <body>
+  <p class="point">
+    按住
+    <kbd>shift</kbd>键可以画直线哦！
+  </p>
   <canvas id="canvas"></canvas>
   <script>
     let canvas = document.querySelector('#canvas');
@@ -18,6 +22,7 @@
     // canvas 画线
     let ctx = canvas.getContext("2d");
     let bFlag = false;
+    let shiftFlag = false;
     let lastPosition = [];
     ctx.fillStyle = "rgb(0,0,0)";
     ctx.strokeStyle = "rgb(0, 0, 0)";
@@ -47,25 +52,56 @@
       canvas.addEventListener('touchend', (e) => {
         bFlag = false;
       });
-    } else {
+    }
+    else {
       // 不支持touch事件
       canvas.onmousedown = (e) => {
+        e.preventDefault();
         bFlag = true;
         lastPosition = [e.clientX, e.clientY];
+        startX = e.pageX;
+        startY = e.pageY;
       };
       canvas.onmousemove = (e) => {
         if (bFlag) {
-          /*绘制原型，arc 四个参数（x,y, 半径, 弧度）*/
-          // ctx.beginPath();
-          // ctx.arc(e.clientX, e.clientY, 5, 0, 2 * Math.PI);
-          // ctx.stroke();
-          // ctx.fill();
+          // 画直线
+          if (shiftFlag) {
+            // drawLine(lastPosition[0], lastPosition[1], e.clientX, lastPosition[1]);
+            // lastPosition = [e.clientX, lastPosition[1]];
+            moveEndX = e.pageX;
+            moveEndY = e.pageY;
+            X = moveEndX - startX;
+            Y = moveEndY - startY;
+            if (X > 0) {
+              console.log("left -> right");
+              drawLine(lastPosition[0], lastPosition[1], e.clientX, lastPosition[1]);
+              lastPosition = [e.clientX, lastPosition[1]];
+              return;
+            }
+
+            if (Y > 0) {
+              console.log("top -> bottom");
+              drawLine(lastPosition[0], lastPosition[1], lastPosition[0], e.clientY);
+              lastPosition = [lastPosition[0], e.clientY];
+              return;
+            }
+            return;
+          }
           drawLine(lastPosition[0], lastPosition[1], e.clientX, e.clientY);
           lastPosition = [e.clientX, e.clientY];
         }
       };
-      canvas.onmouseup = () => {
+      canvas.onmouseup = (e) => {
         bFlag = false;
+        shiftFlag = false;
+      }
+      document.onkeydown = (e) => {
+        if (e.keyCode === 16) {
+          shiftFlag = true;
+        }
+      }
+      document.onkeyup = (e) => {
+        shiftFlag = false;
       }
     }
     function drawLine(x1, y1, x2, y2) {

@@ -11,3 +11,13 @@
   transform: translate3d(-50%, -50%, 0);
   position: absolute;
 }
+.point {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 780px) {
+  .point {
+    display: none;
+  }
+}
