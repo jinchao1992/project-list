@@ -1,0 +1,55 @@
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *::before {
+    box-sizing: border-box;
+  }
+
+  *::after {
+    box-sizing: border-box;
+  }
+
+  #html {
+    word-break: break-all;
+  }
+
+  #div1 {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #div1::before,
+  #div1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+  }
+
+  .radius {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  @media screen and (max-width: 500px) {
+    #html {
+      height: 50vh;
+      overflow: auto;
+    }
+    #div1 {
+      position: relative;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

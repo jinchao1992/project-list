@@ -1,5 +1,5 @@
 let html = document.querySelector('#html');
-let style = document.querySelector('#style');
+let style = document.querySelector('#style1');
 let str = `
 /* 你好，我是一名前端程序员
 * 我需要在页面上加点样式，
