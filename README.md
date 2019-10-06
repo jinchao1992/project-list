@@ -2,3 +2,4 @@
 * HTML 练习介绍人物 预览地址：[https://jinchao1992.github.io/project-list/HTML-Page/index.html](https://jinchao1992.github.io/project-list/HTML-Page/index.html)
 * CSS样式之画一个彩虹 预览地址：[https://jinchao1992.github.io/project-list/css-rainbow/index.html](https://jinchao1992.github.io/project-list/css-rainbow/index.html) 
 * CSS grid 布局示例 预览地址：[https://jinchao1992.github.io/project-list/css-grid/index.html](https://jinchao1992.github.io/project-list/css-grid/index.html)
+* JS Canvas 画线 预览地址：[https://jinchao1992.github.io/project-list/JS-Canvas/](https://jinchao1992.github.io/project-list/JS-Canvas/)
