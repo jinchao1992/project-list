@@ -117,41 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-var html = document.querySelector('#html');
-var style = document.querySelector('#style');
-var str = "\n/* \u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u7A0B\u5E8F\u5458\n* \u6211\u9700\u8981\u5728\u9875\u9762\u4E0A\u52A0\u70B9\u6837\u5F0F\uFF0C\n* \u9996\u5148\uFF0C\u52A0\u4E00\u4E2A\u597D\u770B\u7684\u80CC\u666F\n* \u548C\u597D\u770B\u7684\u6587\u5B57\u989C\u8272\n*/\nbody {\n  background: #21374b;\n  color: white;\n  font-size: 12px;\n}\n/*\n* \u63A5\u4E0B\u6765\uFF0C\u5728\u9875\u9762\u4E0A\u753B\u4E00\u4E2Adiv\n*/\n#div1 {\n width: 200px;\n height: 200px;\n top: 20px;\n right: 20px;\n border: 1px solid red;\n}\n/*\n* div \u4E0D\u592A\u597D\u73A9\u5440\n* \u6CA1\u5173\u7CFB\uFF0C\u53EF\u4EE5\u753B\u4E00\u4E2A\u516B\u5366\u56FE\n* \u9996\u5148\uFF0C\u628A div \u53D8\u6210\u4E00\u4E2A\u5706\n*/\n#div1 {\n  border-radius: 50%;\n  box-shadow: 0 0 5px rgba(0, 0, 0, .5);\n  border: none;\n}\n/*\n* \u516B\u5366\u56FE\n* \u9634\u9633\u76F8\u63A5\uFF0C\u4E00\u9ED1\u4E00\u767D\n*/\n#div1 {\n  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, \n  rgba(255,255,255,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);\n}\n/*\n* \u516B\u5366\u592A\u6781\u641E\u8D77\u6765\n*/\n#div1::before {\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  background: #000;\n  border-radius: 50%;\n}\n#div1::after {\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  background: #fff;\n  border-radius: 50%;\n}\n/*\n* \u753B\u9F99\u70B9\u775B\n* \u753B\u592A\u6781\u9700\u8981\u70B9\u5708\u5566\n*/\n#radius_01 {\n  position:absolute;\n  top: 25px;\n  left: 50%;\n  transform: translateX(-50%);\n  background: #fff;\n}\n#radius_02 {\n  position:absolute;\n  bottom: 25px;\n  left: 50%;\n  transform: translateX(-50%);\n  background: #000;\n  z-index:2;\n}\n";
-var n = 0; // str = str.replace(/\n/g, '<br>');
+})({"../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-var str2 = '';
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
 
-var step = function step() {
-  setTimeout(function () {
-    if (n >= str.length - 1) {
-      // 如果n超过最大的下标值，则不再继续
-      return;
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
     }
 
-    if (str[n] === '\n' && n !== 0) {
-      // 当字符串中包含回车且不是第一个回车时就用换行标签代替
-      str2 += '<br>';
-    } else if (str[n] === ' ') {
-      str2 += '&nbsp;';
-    } else {
-      str2 += str[n];
-    }
-
-    html.innerHTML = str2;
-    style.innerHTML = str.substring(0, n + 1);
-    window.scrollTo(0, 99999);
-    html.scrollTo(0, 99999);
-    n += 1;
-    step();
+    cssTimeout = null;
   }, 50);
-};
+}
 
-step();
-},{}],"../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/bundle-url.js"}],"../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -354,5 +387,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["../../../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map
