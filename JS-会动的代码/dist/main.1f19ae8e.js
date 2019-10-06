@@ -120,9 +120,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 var demo = document.querySelector('#demo');
 var str = "\n\u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u7A0B\u5E8F\u5458\n\u6211\u9700\u8981\u5728\u9875\u9762\u4E0A\u52A0\u70B9\u6837\u5F0F\uFF0C\n\u9996\u5148\uFF0C\u52A0\u4E00\u4E2A\u80CC\u666F\nbody {\n  color: red;\n}\n";
-var n = 0;
-str = str.replace(/\n/g, '<br>');
-demo.innerHTML = str.substring(0, n); // console.log(str.length)
+var n = -1; // str = str.replace(/\n/g, '<br>');
+
+var str2 = '';
 
 var step = function step() {
   setTimeout(function () {
@@ -131,7 +131,14 @@ var step = function step() {
     }
 
     n += 1;
-    demo.innerHTML = str.substring(0, n + 1);
+
+    if (str[n] === '\n' && n !== 0) {
+      str2 += '<br>';
+    } else {
+      str2 += str[n];
+    }
+
+    demo.innerHTML = str2;
     step();
   }, 100);
 };

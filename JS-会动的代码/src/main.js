@@ -7,17 +7,21 @@ body {
   color: red;
 }
 `;
-let n = 0;
-str = str.replace(/\n/g, '<br>');
-demo.innerHTML = str.substring(0, n);
-// console.log(str.length)
+let n = -1;
+// str = str.replace(/\n/g, '<br>');
+let str2 = '';
 let step = () => {
   setTimeout(() => {
     if (n >= str.length - 1) {
       return;
     }
     n += 1;
-    demo.innerHTML = str.substring(0, n + 1);
+    if (str[n] === '\n' && n !== 0) {
+      str2 += '<br>'
+    } else {
+      str2 += str[n]
+    }
+    demo.innerHTML = str2;
     step();
   }, 100)
 }
