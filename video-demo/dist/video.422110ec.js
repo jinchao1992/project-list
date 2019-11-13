@@ -117,79 +117,42 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"video.js":[function(require,module,exports) {
+var chimeeVideo = new ChimeeMobilePlayer({
+  wrapper: '#videWrap',
+  // video dom容器
+  src: 'https://www.runoob.com/try/demo_source/movie.mp4',
+  autoplay: true,
+  controls: false,
+  playsInline: true,
+  preload: 'auto',
+  x5VideoPlayerFullscreen: true,
+  x5VideoOrientation: 'landscape|portrait',
+  xWebkitAirplay: true,
+  muted: true // removeInnerPlugins: ['chimeeMobiControlbar', 'chimeeState'] // 需要移除的插件
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+});
+var oVideWrap = document.querySelector('#videWrap');
+var aItemContainer = document.querySelectorAll('.item-container');
+var items = aItemContainer[1].querySelectorAll('.item');
+var btnPlay = document.querySelector('.btn-play');
+var x, y;
 
-  return bundleURL;
+items[0].querySelector('.itemImg').onload = function () {
+  x = (this.offsetWidth / document.documentElement.clientWidth).toFixed(6);
+  y = (this.offsetHeight / document.documentElement.clientHeight).toFixed(4);
+};
+
+setPosition();
+
+function setPosition() {
+  var timer = setTimeout(function () {
+    oVideWrap.style.transform = "scale(".concat(x, ",").concat(y, ") translate3d(-20px, 0, 0)");
+    oVideWrap.style.position = 'absolute';
+    document.body.style.overflow = "auto";
+  }, 4500);
 }
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +356,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.e308ff8e.js.map
+},{}]},{},["../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","video.js"], null)
+//# sourceMappingURL=/video.422110ec.js.map

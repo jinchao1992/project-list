@@ -34,7 +34,7 @@ if (promise !== undefined) {
 
 function videoAnimate(bFlag) {
   if (!bFlag) {
-    console.log('哈哈')
+    console.log('如果不是自动播放')
     btnPlay.style.opacity = '1'
     btnPlay.addEventListener('touchend', () => {
       document.querySelector('video').play();
@@ -42,7 +42,7 @@ function videoAnimate(bFlag) {
       setPosition()
     })
   } else {
-    console.log(111)
+    console.log('如果是自动播放')
     setPosition();
   }
 }
